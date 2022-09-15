@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
+                           <button id="case-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="case-count" type="text" class="form-control text-center" value="1">
                            <button id="case-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5 id="case-price">$59</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -81,8 +81,25 @@
    <script>
       document.getElementById("case-increase").addEventListener('click', function(){
          // console.log('+ clicked');
-         
+         var caseInput = document.getElementById('case-count');
+         var caseCount = parseInt(caseInput.value); 
+         var caseNewCount = caseCount + 1;
+         caseInput.value = caseNewCount;
+         var casePrice = caseNewCount * 59;
+         document.getElementById('case-price').innerText = '$' + casePrice;
+         // console.log(caseInput.value);
+      });
+
+      document.getElementById('case-decrease').addEventListener('click', function(){
+         // console.log('- clicked');
+         var caseInput = document.getElementById('case-count');
+         var caseCount = parseInt(caseInput.value);
+         var caseNewCount = caseCount - 1;
+         caseInput.value = caseNewCount;
+         var casePrice = caseNewCount * 59;
+         document.getElementById('case-price').innerText = '$' + casePrice;
       })
+
    </script>
 
 </body>
